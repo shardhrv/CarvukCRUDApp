@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { supabase } from '../supabase-client';
+import { supabase } from '../util/supabase-client';
 
 export function useCancelBooking(userId: string | undefined, page: number) {
     const qc = useQueryClient();

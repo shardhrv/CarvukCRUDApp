@@ -1,5 +1,5 @@
-import { supabase } from '../supabase-client';
-import type { Service, Booking } from '../types';
+import { supabase } from './supabase-client';
+import type { Service, Booking } from './types';
 
 export const PAGE_SIZE = 5;
 

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { supabase } from '../supabase-client';
+import { supabase } from '../util/supabase-client';
 
 export function useBooking() {
     const [loading, setLoading] = useState(false);

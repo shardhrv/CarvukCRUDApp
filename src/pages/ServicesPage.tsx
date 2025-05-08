@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import type { Service } from '../types';
+import type { Service } from '../util/types';
 import { ServiceCard } from '../components/ServiceCard';
 import { useNavigate } from 'react-router';
 import { PAGE_SIZE, type ServicesResponse, fetchServicesPage } from '../util/api';

@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { supabase } from '../supabase-client';
+import { supabase } from '../util/supabase-client';
 import type { BookingsResponse } from '../util/api';
 
 export function useAutoCompleteBookings(
