@@ -1,5 +1,3 @@
-// src/pages/LandingPage.tsx
-
 import { Link } from 'react-router';
 import redCar from '../assets/images/redcar.jpg';
 
