@@ -39,6 +39,7 @@ export async function fetchBookingsPage( userId: string, page: number ): Promise
         `
             id,
             booking_time,
+            plate,
             status,
             services:services (
                 service_id,

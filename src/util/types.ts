@@ -17,6 +17,7 @@ export interface Driver {
 export interface Booking {
     id: number;
     booking_time: string;
+    plate: string,
     status: 'scheduled' | 'completed' | 'cancelled';
     services: Service;
     drivers: Driver;

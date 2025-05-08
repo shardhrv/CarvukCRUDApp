@@ -7,7 +7,7 @@ interface Props {
 }
 
 export const BookingCard: React.FC<Props> = ({ booking, onCancel }) => {
-    const { services, drivers, booking_time, status, id } = booking
+    const { services, drivers, booking_time, status, id, plate } = booking
     const formattedPrice = new Intl.NumberFormat('en-SG', {
         style: 'currency',
         currency: 'SGD',
@@ -38,6 +38,9 @@ export const BookingCard: React.FC<Props> = ({ booking, onCancel }) => {
                 </p>
                 <p className="text-gray-600">
                     <strong>Status:</strong> {status}
+                </p>
+                <p className="text-gray-600">
+                    <strong>Plate Number:</strong> {plate}
                 </p>
             </div>
 

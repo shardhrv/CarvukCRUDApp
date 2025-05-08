@@ -3,8 +3,10 @@ import React from 'react';
 interface Props {
     date: string;
     time: string;
+    plate: string;
     onDateChange: (v: string) => void;
     onTimeChange: (v: string) => void;
+    onPlateChange: (v: string) => void;
     onSubmit: () => void;
     loading: boolean;
     errorMsg: string | null;
@@ -12,8 +14,8 @@ interface Props {
 }
 
 export const BookingForm: React.FC<Props> = ({
-    date, time,
-    onDateChange, onTimeChange,
+    date, time, plate,
+    onDateChange, onTimeChange, onPlateChange, 
     onSubmit, loading,
     errorMsg, successMsg,
 }) => (
@@ -40,6 +42,17 @@ export const BookingForm: React.FC<Props> = ({
                 value={time}
                 onChange={e => onTimeChange(e.target.value)}
                 className="w-full mt-1 px-3 py-2 border rounded-lg"/>
+        </label>
+
+        <label className="block">
+            Plate Number
+            <input
+                type="text"
+                value={plate}
+                onChange={e => onPlateChange(e.target.value)}
+                className="w-full mt-1 px-3 py-2 border rounded-lg"
+                placeholder="E.g. SGX1234A"
+            />
         </label>
 
         <button

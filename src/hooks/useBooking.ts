@@ -7,7 +7,7 @@ export function useBooking() {
     const [successMsg, setSuccessMsg] = useState<string|null>(null);
 
     async function book(
-        { userId, serviceId, date, time, }: { userId: string; serviceId: string; date: string; time: string }
+        { userId, serviceId, date, time, plate}: { userId: string; serviceId: string; date: string; time: string, plate: string }
     ) {
         setErrorMsg(null);
         setSuccessMsg(null);
@@ -15,6 +15,7 @@ export function useBooking() {
         if (!userId) return setErrorMsg('You must be logged in.');
         if (!serviceId) return setErrorMsg('Invalid service.');
         if (!date || !time) return setErrorMsg('Select both date and time.');
+        if (!plate.trim()) return setErrorMsg('Plate number is required.')
 
         const bookingTime = new Date(`${date}T${time}`);
         if (bookingTime <= new Date()) {
@@ -77,6 +78,7 @@ export function useBooking() {
                 driver_id: driverId,
                 booking_time: bookingTime.toISOString(),
                 status: 'scheduled',
+                plate: plate.trim(),
             });
         if (insertError) {
             setErrorMsg(insertError.message);

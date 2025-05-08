@@ -10,6 +10,7 @@ export const BookingPage: React.FC = () => {
 
     const [date, setDate] = useState('');
     const [time, setTime] = useState('');
+    const [plate, setPlate] = useState('');
 
     const { loading, errorMsg, successMsg, book } = useBooking();
 
@@ -19,6 +20,7 @@ export const BookingPage: React.FC = () => {
             serviceId: serviceId ?? '',
             date,
             time,
+            plate,
         });
     };
 
@@ -27,8 +29,10 @@ export const BookingPage: React.FC = () => {
             <BookingForm
                 date={date}
                 time={time}
+                plate={plate}
                 onDateChange={setDate}
                 onTimeChange={setTime}
+                onPlateChange={setPlate}
                 onSubmit={handleSubmit}
                 loading={loading}
                 errorMsg={errorMsg}
