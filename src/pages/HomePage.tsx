@@ -3,6 +3,8 @@ import { useAuth } from '../context/AuthContext';
 import { usePaginatedBookings } from '../hooks/usePaginatedBookings';
 import { BookingsListing } from '../components/forms/BookingsListing';
 import { PAGE_SIZE } from '../util/api';
+import { useCancelBooking } from '../hooks/useCancelBooking';
+import { useAutoCompleteBookings } from '../hooks/useAutoCompeteBookings';
 
 export const HomePage: React.FC = () => {
     const { user } = useAuth();
@@ -13,6 +15,8 @@ export const HomePage: React.FC = () => {
         isLoading,
         error
     } = usePaginatedBookings(user?.id, page);
+    const cancelBooking = useCancelBooking(user?.id, page);
+    useAutoCompleteBookings(data, user?.id, page);
 
     if (!user) {
         return <p className="text-center py-4">Please sign in to see your bookings.</p>;
@@ -39,6 +43,7 @@ export const HomePage: React.FC = () => {
                 page={page}
                 onPrev={() => setPage(p => Math.max(p - 1, 0))}
                 onNext={() => setPage(p => Math.min(p + 1, Math.ceil((data?.total ?? 0) / PAGE_SIZE) - 1))}
+                onCancel={(id) => cancelBooking.mutate(id)} 
             />
         </div>
     );

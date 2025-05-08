@@ -32,7 +32,7 @@ export const ServicesPage: React.FC = () => {
     };
 
     return (
-        <div className="h-[calc(100vh-8rem)] bg-cream py-8 px-4">
+        <div className="h-[calc(100vh-4rem)] bg-cream py-8 px-4">
             <h1 className="text-3xl font-bold text-red-800 mb-6 text-center">
                 Our Services
             </h1>

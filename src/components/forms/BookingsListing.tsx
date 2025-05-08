@@ -8,9 +8,10 @@ interface Props {
     page: number;
     onPrev: () => void;
     onNext: () => void;
+    onCancel: (bookingId: number) => void;
 }
 
-export const BookingsListing: React.FC<Props> = ({ data, page, onPrev, onNext }) => {
+export const BookingsListing: React.FC<Props> = ({ data, page, onPrev, onNext, onCancel }) => {
     const bookings = data?.bookings ?? [];
     const total = data?.total ?? 0;
     const pageCount = Math.ceil(total / PAGE_SIZE);
@@ -23,7 +24,7 @@ export const BookingsListing: React.FC<Props> = ({ data, page, onPrev, onNext })
         <>
             <div className="flex flex-wrap gap-6 justify-center">
                 {bookings.map(b => (
-                    <BookingCard key={b.id} booking={b} />
+                    <BookingCard key={b.id} booking={b} onCancel={onCancel}/>
                 ))}
             </div>
             <Pagination

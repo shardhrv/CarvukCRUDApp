@@ -3,10 +3,11 @@ import type { Booking } from '../types';
 
 interface Props {
     booking: Booking;
+    onCancel?: (bookingId: number) => void;
 }
 
-export const BookingCard: React.FC<Props> = ({ booking }) => {
-    const { services, drivers, booking_time, status } = booking
+export const BookingCard: React.FC<Props> = ({ booking, onCancel }) => {
+    const { services, drivers, booking_time, status, id } = booking
     const formattedPrice = new Intl.NumberFormat('en-SG', {
         style: 'currency',
         currency: 'SGD',
@@ -46,9 +47,30 @@ export const BookingCard: React.FC<Props> = ({ booking }) => {
                     {formattedPrice}
                 </span>
                 <div className="text-right text-sm">
+                    <p className="text-gray-900">Driver:</p>
                     <p className="text-gray-900">{drivers.name}</p>
                     <p className="text-gray-600">{drivers.phone_number}</p>
                 </div>
+            </div>
+            
+            <div className="mt-4 flex items-center justify-between">
+                <button
+                    onClick={() => onCancel?.(id)}
+                    disabled={status === 'cancelled' || status === 'completed'}
+                    className={`w-full text-center py-2 rounded-lg font-semibold transition-colors ${
+                        status === 'cancelled'
+                            ? 'bg-gray-300 text-gray-600 cursor-not-allowed'
+                        : status === 'completed'
+                            ? 'bg-green-300 text-green-800 cursor-not-allowed'
+                        : 'bg-red-400 hover:bg-red-800 text-white'
+                    }`}
+                >
+                    {status === 'cancelled'
+                        ? 'Cancelled'
+                    : status === 'completed'
+                        ? 'Completed'
+                    : 'Cancel Booking'}
+                </button>
             </div>
         </div>
     )
